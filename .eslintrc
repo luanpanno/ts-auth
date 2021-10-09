@@ -1,0 +1,43 @@
+{
+  "extends": [
+    "airbnb-base",
+    "airbnb-typescript/base",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "plugins": ["@typescript-eslint", "import-helpers"],
+  "env": { "browser": true, "es6": true },
+  "globals": { "Atomics": "readonly", "SharedArrayBuffer": "readonly" },
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module",
+    "project": "./tsconfig.json"
+  },
+  "rules": {
+    "max-len": ["error", 120],
+    "prettier/prettier": ["error", { "endOfLine": "auto" }],
+    "import-helpers/order-imports": [
+      "error",
+      {
+        "newlinesBetween": "always",
+        "groups": ["module", ["/^@./"], ["parent", "sibling", "index"]],
+        "alphabetize": {
+          "order": "asc",
+          "ignoreCase": true
+        }
+      }
+    ],
+    "import/prefer-default-export": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/no-empty-function": "off",
+    "no-alert": "error",
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": "warn",
+    "no-plusplus": "off",
+    "class-methods-use-this": "off",
+    "no-underscore-dangle": "off",
+    "no-console": "off",
+    "no-useless-return": "off"
+  }
+}
