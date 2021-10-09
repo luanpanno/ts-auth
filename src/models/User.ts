@@ -1,7 +1,16 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import bcrypt from 'bcryptjs';
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  BeforeInsert,
+  BeforeUpdate,
+} from 'typeorm';
+
+import { env } from '../config/env';
 
 @Entity('Users')
-export class User {
+class User {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
@@ -13,4 +22,12 @@ export class User {
 
   @Column()
   password: string;
+
+  @BeforeInsert()
+  @BeforeUpdate()
+  hashPassword() {
+    this.password = bcrypt.hashSync(this.password, env.PASSWORD_SALT);
+  }
 }
+
+export default User;
