@@ -1,7 +1,6 @@
 version: '3'
-
 services:
-  teste-postgres-compose:
+  tsauth-postgres:
     image: postgres
     environment:
       POSTGRES_USER: 'admin'
@@ -11,4 +10,4 @@ services:
     expose:
       - '5432'
     volumes:
-      - ./_data:/var/lib/mysql
+      - ./src/database/data:/var/lib/postgres
