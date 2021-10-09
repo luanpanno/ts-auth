@@ -26,7 +26,7 @@ class User {
   @BeforeInsert()
   @BeforeUpdate()
   hashPassword() {
-    this.password = bcrypt.hashSync(this.password, env.PASSWORD_SALT);
+    this.password = bcrypt.hashSync(this.password, Number(env.PASSWORD_SALT));
   }
 }
 

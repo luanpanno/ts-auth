@@ -4,6 +4,15 @@ import { getRepository } from 'typeorm';
 import User from '../models/User';
 
 class UserController {
+  public async index(req: Request, res: Response) {
+    const repository = getRepository(User);
+    const users = await repository.find();
+
+    return res.json(
+      users.map((x) => ({ id: x.id, name: x.name, email: x.email }))
+    );
+  }
+
   public async store(req: Request, res: Response) {
     const { name, email, password } = req.body;
     const repository = getRepository(User);

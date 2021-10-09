@@ -38,6 +38,7 @@
     "class-methods-use-this": "off",
     "no-underscore-dangle": "off",
     "no-console": "off",
+    "consistent-return": "off",
     "no-useless-return": "off"
   }
 }
